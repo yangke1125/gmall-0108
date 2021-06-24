@@ -36,6 +36,7 @@ public class AttrController {
     private AttrService attrService;
 
     @GetMapping("category/{cId}")
+    @ApiOperation("新增之销售属性")
     public ResponseVo<List<AttrEntity>> queryAttrBycId(@PathVariable("cId")long cId,
     @RequestParam(value = "type",required = false)Integer type,
     @RequestParam(value = "searchType",required = false)Integer searchType){
