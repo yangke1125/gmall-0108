@@ -8,6 +8,9 @@ spring:
     sentinel:
       transport:
         dashboard: localhost:8080
+    alibaba:
+      seata:
+        tx-service-group: tx-gmall-group
   zipkin:
     base-url: http://localhost:9411
     discovery-client-enabled: true

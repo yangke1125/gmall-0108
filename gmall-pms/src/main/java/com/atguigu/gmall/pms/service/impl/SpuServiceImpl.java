@@ -11,6 +11,7 @@ import com.atguigu.gmall.pms.vo.SpuAttrValueVo;
 import com.atguigu.gmall.pms.vo.SpuVo;
 import com.atguigu.gmall.sms.vo.SkuSaleVo;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
 
 import com.atguigu.gmall.pms.mapper.SpuMapper;
-
+import org.springframework.transaction.annotation.Transactional;
 
 @Service("spuService")
 public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements SpuService {
@@ -73,34 +74,21 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
 
     }
 
+    @GlobalTransactional
     @Override
     public void bigSave(SpuVo spu) {
 
-        spu.setCreateTime(new Date());
-        spu.setUpdateTime(spu.getCreateTime());
-        this.save(spu);
-        Long spuId = spu.getId();
+        Long spuId = savaSpu(spu);
 
-        List<String> spuImages = spu.getSpuImages();
-        if (!CollectionUtils.isEmpty(spuImages)){
-            SpuDescEntity spuDescEntity = new SpuDescEntity();
-            spuDescEntity.setSpuId(spuId);
-            spuDescEntity.setDecript(StringUtils.join(spuImages,","));
-            this.spuDescMapper.insert(spuDescEntity);
-        }
+        savaSpuDesc(spu, spuId);
 
-        List<SpuAttrValueVo> baseAttrs = spu.getBaseAttrs();
-        if (!CollectionUtils.isEmpty(baseAttrs)){
-            List<SpuAttrValueEntity> spuAttrValueEntities = baseAttrs.stream().filter(spuAttrValueVo -> spuAttrValueVo.getAttrValue()!=null
-            ).map(spuAttrValueVo -> {
-                SpuAttrValueEntity spuAttrValueEntity = new SpuAttrValueEntity();
-                BeanUtils.copyProperties(spuAttrValueVo, spuAttrValueEntity);
-                spuAttrValueEntity.setSpuId(spuId);
-                return spuAttrValueEntity;
-            }).collect(Collectors.toList());
-            this.spuAttrValueService.saveBatch(spuAttrValueEntities);
-        }
+        saveBaseAttr(spu, spuId);
         //2 Sku
+        saveSku(spu, spuId);
+        // int i =1/0;
+    }
+
+    public void saveSku(SpuVo spu, Long spuId) {
         List<SkuVo> skus = spu.getSkus();
         if (CollectionUtils.isEmpty(skus)){
             return ;
@@ -114,6 +102,7 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
                 skuVo.setDefaultImage(StringUtils.isBlank(skuVo.getDefaultImage())?images.get(0):skuVo.getDefaultImage());
             }
             this.skuMapper.insert(skuVo);
+
             Long skuId = skuVo.getId();
             if (!CollectionUtils.isEmpty(images)){
                 this.skuImagesService.saveBatch(images.stream().map(image->{
@@ -136,6 +125,37 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
             skuSaleVo.setSkuId(skuId);
             this.gmallSmsClient.saleSales(skuSaleVo);
         });
+    }
+
+    public void saveBaseAttr(SpuVo spu, Long spuId) {
+        List<SpuAttrValueVo> baseAttrs = spu.getBaseAttrs();
+        if (!CollectionUtils.isEmpty(baseAttrs)){
+            List<SpuAttrValueEntity> spuAttrValueEntities = baseAttrs.stream().filter(spuAttrValueVo -> spuAttrValueVo.getAttrValue()!=null
+            ).map(spuAttrValueVo -> {
+                SpuAttrValueEntity spuAttrValueEntity = new SpuAttrValueEntity();
+                BeanUtils.copyProperties(spuAttrValueVo, spuAttrValueEntity);
+                spuAttrValueEntity.setSpuId(spuId);
+                return spuAttrValueEntity;
+            }).collect(Collectors.toList());
+            this.spuAttrValueService.saveBatch(spuAttrValueEntities);
+        }
+    }
+
+    public void savaSpuDesc(SpuVo spu, Long spuId) {
+        List<String> spuImages = spu.getSpuImages();
+        if (!CollectionUtils.isEmpty(spuImages)){
+            SpuDescEntity spuDescEntity = new SpuDescEntity();
+            spuDescEntity.setSpuId(spuId);
+            spuDescEntity.setDecript(StringUtils.join(spuImages,","));
+            this.spuDescMapper.insert(spuDescEntity);
+        }
+    }
+
+    public Long savaSpu(SpuVo spu) {
+        spu.setCreateTime(new Date());
+        spu.setUpdateTime(spu.getCreateTime());
+        this.save(spu);
+        return spu.getId();
     }
 
 //    public static void main(String[] args) {
