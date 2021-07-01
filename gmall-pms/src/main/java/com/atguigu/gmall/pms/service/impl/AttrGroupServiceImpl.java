@@ -3,7 +3,7 @@ package com.atguigu.gmall.pms.service.impl;
 import com.atguigu.gmall.pms.entity.AttrEntity;
 import com.atguigu.gmall.pms.mapper.AttrMapper;
 import com.atguigu.gmall.pms.service.AttrService;
-import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +19,7 @@ import com.atguigu.gmall.common.bean.PageParamVo;
 import com.atguigu.gmall.pms.mapper.AttrGroupMapper;
 import com.atguigu.gmall.pms.entity.AttrGroupEntity;
 import com.atguigu.gmall.pms.service.AttrGroupService;
+import org.springframework.util.CollectionUtils;
 
 
 @Service("attrGroupService")
