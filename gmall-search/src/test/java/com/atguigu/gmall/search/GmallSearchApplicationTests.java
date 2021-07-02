@@ -122,13 +122,9 @@ class GmallSearchApplicationTests {
                 }
             });
 
-
-
-
             pageSize =spuEntities.size();
             pageNum++;
         }while (pageSize==100);
-
 
     }
 
