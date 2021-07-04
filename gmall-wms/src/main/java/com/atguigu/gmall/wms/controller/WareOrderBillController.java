@@ -39,7 +39,7 @@ public class WareOrderBillController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> queryWareOrderBillByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> queryWareOrderBillByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = wareOrderBillService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class WareOrderBillController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<WareOrderBillEntity> queryWareOrderBillById(@PathVariable("id") Long id){
-		WareOrderBillEntity wareOrderBill = wareOrderBillService.getById(id);
+    public ResponseVo<WareOrderBillEntity> queryWareOrderBillById(@PathVariable("id") Long id) {
+        WareOrderBillEntity wareOrderBill = wareOrderBillService.getById(id);
 
         return ResponseVo.ok(wareOrderBill);
     }
@@ -62,8 +62,8 @@ public class WareOrderBillController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody WareOrderBillEntity wareOrderBill){
-		wareOrderBillService.save(wareOrderBill);
+    public ResponseVo<Object> save(@RequestBody WareOrderBillEntity wareOrderBill) {
+        wareOrderBillService.save(wareOrderBill);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class WareOrderBillController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody WareOrderBillEntity wareOrderBill){
-		wareOrderBillService.updateById(wareOrderBill);
+    public ResponseVo update(@RequestBody WareOrderBillEntity wareOrderBill) {
+        wareOrderBillService.updateById(wareOrderBill);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class WareOrderBillController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		wareOrderBillService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        wareOrderBillService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

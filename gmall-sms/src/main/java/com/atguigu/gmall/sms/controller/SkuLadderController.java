@@ -39,7 +39,7 @@ public class SkuLadderController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> querySkuLadderByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> querySkuLadderByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = skuLadderService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class SkuLadderController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<SkuLadderEntity> querySkuLadderById(@PathVariable("id") Long id){
-		SkuLadderEntity skuLadder = skuLadderService.getById(id);
+    public ResponseVo<SkuLadderEntity> querySkuLadderById(@PathVariable("id") Long id) {
+        SkuLadderEntity skuLadder = skuLadderService.getById(id);
 
         return ResponseVo.ok(skuLadder);
     }
@@ -62,8 +62,8 @@ public class SkuLadderController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody SkuLadderEntity skuLadder){
-		skuLadderService.save(skuLadder);
+    public ResponseVo<Object> save(@RequestBody SkuLadderEntity skuLadder) {
+        skuLadderService.save(skuLadder);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class SkuLadderController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody SkuLadderEntity skuLadder){
-		skuLadderService.updateById(skuLadder);
+    public ResponseVo update(@RequestBody SkuLadderEntity skuLadder) {
+        skuLadderService.updateById(skuLadder);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class SkuLadderController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		skuLadderService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        skuLadderService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

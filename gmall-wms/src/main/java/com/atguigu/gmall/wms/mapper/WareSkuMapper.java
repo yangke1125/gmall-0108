@@ -6,12 +6,12 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 商品库存
- * 
+ *
  * @author fengge
  * @email fengge@atguigu.com
  * @date 2021-06-23 18:36:34
  */
 @Mapper
 public interface WareSkuMapper extends BaseMapper<WareSkuEntity> {
-	
+
 }

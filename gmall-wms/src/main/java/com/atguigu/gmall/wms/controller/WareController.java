@@ -39,7 +39,7 @@ public class WareController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> queryWareByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> queryWareByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = wareService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class WareController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<WareEntity> queryWareById(@PathVariable("id") Long id){
-		WareEntity ware = wareService.getById(id);
+    public ResponseVo<WareEntity> queryWareById(@PathVariable("id") Long id) {
+        WareEntity ware = wareService.getById(id);
 
         return ResponseVo.ok(ware);
     }
@@ -62,8 +62,8 @@ public class WareController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody WareEntity ware){
-		wareService.save(ware);
+    public ResponseVo<Object> save(@RequestBody WareEntity ware) {
+        wareService.save(ware);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class WareController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody WareEntity ware){
-		wareService.updateById(ware);
+    public ResponseVo update(@RequestBody WareEntity ware) {
+        wareService.updateById(ware);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class WareController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		wareService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        wareService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

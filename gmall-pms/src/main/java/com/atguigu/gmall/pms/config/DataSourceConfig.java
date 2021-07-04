@@ -21,7 +21,7 @@ public class DataSourceConfig {
 
     @Bean
     @ConfigurationProperties(prefix = "spring.datasource")
-    public HikariDataSource hikariDataSource(@Value("${spring.datasource.url}")String url) {
+    public HikariDataSource hikariDataSource(@Value("${spring.datasource.url}") String url) {
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setJdbcUrl(url);
         return dataSource;
@@ -30,16 +30,15 @@ public class DataSourceConfig {
     /**
      * 需要将 DataSourceProxy 设置为主数据源，否则事务无法回滚
      *
-     *
      * @return The default datasource
      */
     @Primary
     @Bean("dataSource")
     public DataSource dataSource(
             @Value("${spring.datasource.driver-class-name}") String driverClassName,
-            @Value("${spring.datasource.url}")String url,
-            @Value("${spring.datasource.username}")String username,
-            @Value("${spring.datasource.password}")String password
+            @Value("${spring.datasource.url}") String url,
+            @Value("${spring.datasource.username}") String username,
+            @Value("${spring.datasource.password}") String password
     ) {
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setDriverClassName(driverClassName);

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -21,6 +22,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEnt
 
     @Autowired
     CategoryMapper categoryMapper;
+
     @Override
     public PageResultVo queryPage(PageParamVo paramVo) {
         IPage<CategoryEntity> page = this.page(
@@ -34,8 +36,8 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEnt
     @Override
     public List<CategoryEntity> queryCategory(long parentId) {
         QueryWrapper<CategoryEntity> queryWrapper = new QueryWrapper<>();
-        if (parentId!=-1){
-            queryWrapper.eq("parent_id",parentId);
+        if (parentId != -1) {
+            queryWrapper.eq("parent_id", parentId);
         }
         return categoryMapper.selectList(queryWrapper);
     }

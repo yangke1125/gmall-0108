@@ -39,7 +39,7 @@ public class SeckillSessionController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> querySeckillSessionByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> querySeckillSessionByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = seckillSessionService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class SeckillSessionController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<SeckillSessionEntity> querySeckillSessionById(@PathVariable("id") Long id){
-		SeckillSessionEntity seckillSession = seckillSessionService.getById(id);
+    public ResponseVo<SeckillSessionEntity> querySeckillSessionById(@PathVariable("id") Long id) {
+        SeckillSessionEntity seckillSession = seckillSessionService.getById(id);
 
         return ResponseVo.ok(seckillSession);
     }
@@ -62,8 +62,8 @@ public class SeckillSessionController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody SeckillSessionEntity seckillSession){
-		seckillSessionService.save(seckillSession);
+    public ResponseVo<Object> save(@RequestBody SeckillSessionEntity seckillSession) {
+        seckillSessionService.save(seckillSession);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class SeckillSessionController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody SeckillSessionEntity seckillSession){
-		seckillSessionService.updateById(seckillSession);
+    public ResponseVo update(@RequestBody SeckillSessionEntity seckillSession) {
+        seckillSessionService.updateById(seckillSession);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class SeckillSessionController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		seckillSessionService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        seckillSessionService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

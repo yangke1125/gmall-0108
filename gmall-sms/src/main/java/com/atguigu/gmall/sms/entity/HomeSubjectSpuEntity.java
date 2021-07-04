@@ -5,11 +5,12 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import lombok.Data;
 
 /**
  * 专题商品
- * 
+ *
  * @author fengge
  * @email fengge@atguigu.com
  * @date 2021-06-22 17:13:51
@@ -17,28 +18,28 @@ import lombok.Data;
 @Data
 @TableName("sms_home_subject_spu")
 public class HomeSubjectSpuEntity implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * id
-	 */
-	@TableId
-	private Long id;
-	/**
-	 * 专题名字
-	 */
-	private String name;
-	/**
-	 * 专题id
-	 */
-	private Long subjectId;
-	/**
-	 * spu_id
-	 */
-	private Long spuId;
-	/**
-	 * 排序
-	 */
-	private Integer sort;
+    /**
+     * id
+     */
+    @TableId
+    private Long id;
+    /**
+     * 专题名字
+     */
+    private String name;
+    /**
+     * 专题id
+     */
+    private Long subjectId;
+    /**
+     * spu_id
+     */
+    private Long spuId;
+    /**
+     * 排序
+     */
+    private Integer sort;
 
 }

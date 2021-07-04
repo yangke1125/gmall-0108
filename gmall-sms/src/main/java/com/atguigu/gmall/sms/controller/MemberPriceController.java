@@ -39,7 +39,7 @@ public class MemberPriceController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> queryMemberPriceByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> queryMemberPriceByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = memberPriceService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class MemberPriceController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<MemberPriceEntity> queryMemberPriceById(@PathVariable("id") Long id){
-		MemberPriceEntity memberPrice = memberPriceService.getById(id);
+    public ResponseVo<MemberPriceEntity> queryMemberPriceById(@PathVariable("id") Long id) {
+        MemberPriceEntity memberPrice = memberPriceService.getById(id);
 
         return ResponseVo.ok(memberPrice);
     }
@@ -62,8 +62,8 @@ public class MemberPriceController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody MemberPriceEntity memberPrice){
-		memberPriceService.save(memberPrice);
+    public ResponseVo<Object> save(@RequestBody MemberPriceEntity memberPrice) {
+        memberPriceService.save(memberPrice);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class MemberPriceController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody MemberPriceEntity memberPrice){
-		memberPriceService.updateById(memberPrice);
+    public ResponseVo update(@RequestBody MemberPriceEntity memberPrice) {
+        memberPriceService.updateById(memberPrice);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class MemberPriceController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		memberPriceService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        memberPriceService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

@@ -39,7 +39,7 @@ public class HomeAdvController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> queryHomeAdvByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> queryHomeAdvByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = homeAdvService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class HomeAdvController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<HomeAdvEntity> queryHomeAdvById(@PathVariable("id") Long id){
-		HomeAdvEntity homeAdv = homeAdvService.getById(id);
+    public ResponseVo<HomeAdvEntity> queryHomeAdvById(@PathVariable("id") Long id) {
+        HomeAdvEntity homeAdv = homeAdvService.getById(id);
 
         return ResponseVo.ok(homeAdv);
     }
@@ -62,8 +62,8 @@ public class HomeAdvController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody HomeAdvEntity homeAdv){
-		homeAdvService.save(homeAdv);
+    public ResponseVo<Object> save(@RequestBody HomeAdvEntity homeAdv) {
+        homeAdvService.save(homeAdv);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class HomeAdvController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody HomeAdvEntity homeAdv){
-		homeAdvService.updateById(homeAdv);
+    public ResponseVo update(@RequestBody HomeAdvEntity homeAdv) {
+        homeAdvService.updateById(homeAdv);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class HomeAdvController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		homeAdvService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        homeAdvService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

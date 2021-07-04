@@ -39,7 +39,7 @@ public class SeckillSkuNoticeController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> querySeckillSkuNoticeByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> querySeckillSkuNoticeByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = seckillSkuNoticeService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class SeckillSkuNoticeController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<SeckillSkuNoticeEntity> querySeckillSkuNoticeById(@PathVariable("id") Long id){
-		SeckillSkuNoticeEntity seckillSkuNotice = seckillSkuNoticeService.getById(id);
+    public ResponseVo<SeckillSkuNoticeEntity> querySeckillSkuNoticeById(@PathVariable("id") Long id) {
+        SeckillSkuNoticeEntity seckillSkuNotice = seckillSkuNoticeService.getById(id);
 
         return ResponseVo.ok(seckillSkuNotice);
     }
@@ -62,8 +62,8 @@ public class SeckillSkuNoticeController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody SeckillSkuNoticeEntity seckillSkuNotice){
-		seckillSkuNoticeService.save(seckillSkuNotice);
+    public ResponseVo<Object> save(@RequestBody SeckillSkuNoticeEntity seckillSkuNotice) {
+        seckillSkuNoticeService.save(seckillSkuNotice);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class SeckillSkuNoticeController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody SeckillSkuNoticeEntity seckillSkuNotice){
-		seckillSkuNoticeService.updateById(seckillSkuNotice);
+    public ResponseVo update(@RequestBody SeckillSkuNoticeEntity seckillSkuNotice) {
+        seckillSkuNoticeService.updateById(seckillSkuNotice);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class SeckillSkuNoticeController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		seckillSkuNoticeService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        seckillSkuNoticeService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

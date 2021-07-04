@@ -10,20 +10,25 @@ import java.util.List;
 public interface GmallPmsApi {
     @PostMapping("pms/spu/page")
     public ResponseVo<List<SpuEntity>> querySpuByPageJson(@RequestBody PageParamVo paramVo);
+
     @GetMapping("pms/sku/spu/{spuId}")
     public ResponseVo<List<SkuEntity>> querySkuBySpuId(@PathVariable("spuId") long spuId);
+
     @GetMapping("pms/brand/{id}")
     public ResponseVo<BrandEntity> queryBrandById(@PathVariable("id") Long id);
+
     @GetMapping("pms/category/{id}")
     public ResponseVo<CategoryEntity> queryCategoryById(@PathVariable("id") Long id);
+
     @GetMapping("pms/skuattrvalue/search/{cid}")
     public ResponseVo<List<SkuAttrValueEntity>> querySearchAttrValuesBySkuId(
-            @PathVariable("cid")Long cid,
-            @RequestParam("skuId")Long skuId
+            @PathVariable("cid") Long cid,
+            @RequestParam("skuId") Long skuId
     );
+
     @GetMapping("pms/spuattrvalue/search/{cid}")
     public ResponseVo<List<SpuAttrValueEntity>> querySearchAttrValuesBySpuId(
-            @PathVariable("cid")Long cid,
-            @RequestParam("spuId")Long spuId
+            @PathVariable("cid") Long cid,
+            @RequestParam("spuId") Long spuId
     );
 }

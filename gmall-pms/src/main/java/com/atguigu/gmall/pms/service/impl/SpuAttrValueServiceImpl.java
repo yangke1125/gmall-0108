@@ -28,6 +28,7 @@ public class SpuAttrValueServiceImpl extends ServiceImpl<SpuAttrValueMapper, Spu
 
     @Autowired
     private AttrMapper attrMapper;
+
     @Override
     public PageResultVo queryPage(PageParamVo paramVo) {
         IPage<SpuAttrValueEntity> page = this.page(
@@ -41,11 +42,11 @@ public class SpuAttrValueServiceImpl extends ServiceImpl<SpuAttrValueMapper, Spu
     @Override
     public List<SpuAttrValueEntity> querySearchAttrValuesBySpuId(Long cid, Long spuId) {
         List<AttrEntity> attrEntities = this.attrMapper.selectList(new QueryWrapper<AttrEntity>().eq("category_id", cid).eq("search_type", 1));
-        if (CollectionUtils.isEmpty(attrEntities)){
+        if (CollectionUtils.isEmpty(attrEntities)) {
             return null;
         }
         List<Long> attrIds = attrEntities.stream().map(AttrEntity::getId).collect(Collectors.toList());
-        return this.list(new QueryWrapper<SpuAttrValueEntity>().eq("spu_id",spuId).in("attr_id",attrIds));
+        return this.list(new QueryWrapper<SpuAttrValueEntity>().eq("spu_id", spuId).in("attr_id", attrIds));
 
 
     }

@@ -39,7 +39,7 @@ public class SkuFullReductionController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> querySkuFullReductionByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> querySkuFullReductionByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = skuFullReductionService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class SkuFullReductionController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<SkuFullReductionEntity> querySkuFullReductionById(@PathVariable("id") Long id){
-		SkuFullReductionEntity skuFullReduction = skuFullReductionService.getById(id);
+    public ResponseVo<SkuFullReductionEntity> querySkuFullReductionById(@PathVariable("id") Long id) {
+        SkuFullReductionEntity skuFullReduction = skuFullReductionService.getById(id);
 
         return ResponseVo.ok(skuFullReduction);
     }
@@ -62,8 +62,8 @@ public class SkuFullReductionController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody SkuFullReductionEntity skuFullReduction){
-		skuFullReductionService.save(skuFullReduction);
+    public ResponseVo<Object> save(@RequestBody SkuFullReductionEntity skuFullReduction) {
+        skuFullReductionService.save(skuFullReduction);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class SkuFullReductionController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody SkuFullReductionEntity skuFullReduction){
-		skuFullReductionService.updateById(skuFullReduction);
+    public ResponseVo update(@RequestBody SkuFullReductionEntity skuFullReduction) {
+        skuFullReductionService.updateById(skuFullReduction);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class SkuFullReductionController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		skuFullReductionService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        skuFullReductionService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

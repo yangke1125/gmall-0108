@@ -39,7 +39,7 @@ public class CouponHistoryController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> queryCouponHistoryByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> queryCouponHistoryByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = couponHistoryService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class CouponHistoryController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<CouponHistoryEntity> queryCouponHistoryById(@PathVariable("id") Long id){
-		CouponHistoryEntity couponHistory = couponHistoryService.getById(id);
+    public ResponseVo<CouponHistoryEntity> queryCouponHistoryById(@PathVariable("id") Long id) {
+        CouponHistoryEntity couponHistory = couponHistoryService.getById(id);
 
         return ResponseVo.ok(couponHistory);
     }
@@ -62,8 +62,8 @@ public class CouponHistoryController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody CouponHistoryEntity couponHistory){
-		couponHistoryService.save(couponHistory);
+    public ResponseVo<Object> save(@RequestBody CouponHistoryEntity couponHistory) {
+        couponHistoryService.save(couponHistory);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class CouponHistoryController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody CouponHistoryEntity couponHistory){
-		couponHistoryService.updateById(couponHistory);
+    public ResponseVo update(@RequestBody CouponHistoryEntity couponHistory) {
+        couponHistoryService.updateById(couponHistory);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class CouponHistoryController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		couponHistoryService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        couponHistoryService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

@@ -36,16 +36,17 @@ public class SkuBoundsController {
     private SkuBoundsService skuBoundsService;
 
     @PostMapping("sales/save")
-    public ResponseVo saleSales(@RequestBody SkuSaleVo saleVo){
+    public ResponseVo saleSales(@RequestBody SkuSaleVo saleVo) {
         this.skuBoundsService.saleSales(saleVo);
         return ResponseVo.ok();
     }
+
     /**
      * 列表
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> querySkuBoundsByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> querySkuBoundsByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = skuBoundsService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -57,8 +58,8 @@ public class SkuBoundsController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<SkuBoundsEntity> querySkuBoundsById(@PathVariable("id") Long id){
-		SkuBoundsEntity skuBounds = skuBoundsService.getById(id);
+    public ResponseVo<SkuBoundsEntity> querySkuBoundsById(@PathVariable("id") Long id) {
+        SkuBoundsEntity skuBounds = skuBoundsService.getById(id);
 
         return ResponseVo.ok(skuBounds);
     }
@@ -68,8 +69,8 @@ public class SkuBoundsController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody SkuBoundsEntity skuBounds){
-		skuBoundsService.save(skuBounds);
+    public ResponseVo<Object> save(@RequestBody SkuBoundsEntity skuBounds) {
+        skuBoundsService.save(skuBounds);
 
         return ResponseVo.ok();
     }
@@ -79,8 +80,8 @@ public class SkuBoundsController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody SkuBoundsEntity skuBounds){
-		skuBoundsService.updateById(skuBounds);
+    public ResponseVo update(@RequestBody SkuBoundsEntity skuBounds) {
+        skuBoundsService.updateById(skuBounds);
 
         return ResponseVo.ok();
     }
@@ -90,8 +91,8 @@ public class SkuBoundsController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		skuBoundsService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        skuBoundsService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

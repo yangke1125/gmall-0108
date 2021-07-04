@@ -39,7 +39,7 @@ public class WareOrderBillDetailController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> queryWareOrderBillDetailByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> queryWareOrderBillDetailByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = wareOrderBillDetailService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class WareOrderBillDetailController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<WareOrderBillDetailEntity> queryWareOrderBillDetailById(@PathVariable("id") Long id){
-		WareOrderBillDetailEntity wareOrderBillDetail = wareOrderBillDetailService.getById(id);
+    public ResponseVo<WareOrderBillDetailEntity> queryWareOrderBillDetailById(@PathVariable("id") Long id) {
+        WareOrderBillDetailEntity wareOrderBillDetail = wareOrderBillDetailService.getById(id);
 
         return ResponseVo.ok(wareOrderBillDetail);
     }
@@ -62,8 +62,8 @@ public class WareOrderBillDetailController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody WareOrderBillDetailEntity wareOrderBillDetail){
-		wareOrderBillDetailService.save(wareOrderBillDetail);
+    public ResponseVo<Object> save(@RequestBody WareOrderBillDetailEntity wareOrderBillDetail) {
+        wareOrderBillDetailService.save(wareOrderBillDetail);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class WareOrderBillDetailController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody WareOrderBillDetailEntity wareOrderBillDetail){
-		wareOrderBillDetailService.updateById(wareOrderBillDetail);
+    public ResponseVo update(@RequestBody WareOrderBillDetailEntity wareOrderBillDetail) {
+        wareOrderBillDetailService.updateById(wareOrderBillDetail);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class WareOrderBillDetailController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		wareOrderBillDetailService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        wareOrderBillDetailService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

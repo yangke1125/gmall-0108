@@ -13,9 +13,9 @@ public class SpuAttrValueVo extends SpuAttrValueEntity {
     private List<String> valueSelected;
 
     public void setValueSelected(List<String> valueSelected) {
-        if (CollectionUtils.isEmpty(valueSelected)){
+        if (CollectionUtils.isEmpty(valueSelected)) {
             return;
         }
-        this.setAttrValue(StringUtils.join(valueSelected,","));
+        this.setAttrValue(StringUtils.join(valueSelected, ","));
     }
 }

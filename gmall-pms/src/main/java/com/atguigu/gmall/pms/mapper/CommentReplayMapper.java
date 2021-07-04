@@ -6,12 +6,12 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 商品评价回复关系
- * 
+ *
  * @author fengge
  * @email fengge@atguigu.com
  * @date 2021-06-22 15:15:40
  */
 @Mapper
 public interface CommentReplayMapper extends BaseMapper<CommentReplayEntity> {
-	
+
 }

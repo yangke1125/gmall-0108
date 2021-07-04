@@ -39,7 +39,7 @@ public class HomeSubjectController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> queryHomeSubjectByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> queryHomeSubjectByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = homeSubjectService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class HomeSubjectController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<HomeSubjectEntity> queryHomeSubjectById(@PathVariable("id") Long id){
-		HomeSubjectEntity homeSubject = homeSubjectService.getById(id);
+    public ResponseVo<HomeSubjectEntity> queryHomeSubjectById(@PathVariable("id") Long id) {
+        HomeSubjectEntity homeSubject = homeSubjectService.getById(id);
 
         return ResponseVo.ok(homeSubject);
     }
@@ -62,8 +62,8 @@ public class HomeSubjectController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody HomeSubjectEntity homeSubject){
-		homeSubjectService.save(homeSubject);
+    public ResponseVo<Object> save(@RequestBody HomeSubjectEntity homeSubject) {
+        homeSubjectService.save(homeSubject);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class HomeSubjectController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody HomeSubjectEntity homeSubject){
-		homeSubjectService.updateById(homeSubject);
+    public ResponseVo update(@RequestBody HomeSubjectEntity homeSubject) {
+        homeSubjectService.updateById(homeSubject);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class HomeSubjectController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		homeSubjectService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        homeSubjectService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

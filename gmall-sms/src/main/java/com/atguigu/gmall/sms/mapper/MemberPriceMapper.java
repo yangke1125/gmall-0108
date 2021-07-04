@@ -6,12 +6,12 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 商品会员价格
- * 
+ *
  * @author fengge
  * @email fengge@atguigu.com
  * @date 2021-06-22 17:13:51
  */
 @Mapper
 public interface MemberPriceMapper extends BaseMapper<MemberPriceEntity> {
-	
+
 }

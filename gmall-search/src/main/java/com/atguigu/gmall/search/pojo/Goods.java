@@ -10,17 +10,17 @@ import java.util.Date;
 import java.util.List;
 
 @Data
-@Document(indexName = "goods",type = "info",shards = 3,replicas = 2)
+@Document(indexName = "goods", type = "info", shards = 3, replicas = 2)
 public class Goods {
 
     //商品列表
     @Id
     private Long skuId;
-    @Field(type = FieldType.Keyword,index = false)
+    @Field(type = FieldType.Keyword, index = false)
     private String defaultImage;
-    @Field(type = FieldType.Text,analyzer = "ik_max_word")
+    @Field(type = FieldType.Text, analyzer = "ik_max_word")
     private String title;
-    @Field(type = FieldType.Keyword,index = false)
+    @Field(type = FieldType.Keyword, index = false)
     private String subTitle;
     @Field(type = FieldType.Double)
     private Double price;
@@ -31,7 +31,7 @@ public class Goods {
     @Field(type = FieldType.Date)
     private Date createTime;
     @Field(type = FieldType.Boolean)
-    private Boolean stock = false;
+    private Boolean store = false;
 
     //品牌聚合
     @Field(type = FieldType.Long)

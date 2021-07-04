@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -31,12 +32,12 @@ public class AttrServiceImpl extends ServiceImpl<AttrMapper, AttrEntity> impleme
     @Override
     public List<AttrEntity> queryAttrBycId(long cId, Integer type, Integer searchType) {
         QueryWrapper<AttrEntity> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("category_id",cId);
-        if (type!=null){
-            queryWrapper.eq("type",type);
+        queryWrapper.eq("category_id", cId);
+        if (type != null) {
+            queryWrapper.eq("type", type);
         }
-        if (searchType!=null){
-            queryWrapper.eq("searchType",searchType);
+        if (searchType != null) {
+            queryWrapper.eq("searchType", searchType);
         }
         return this.list(queryWrapper);
     }

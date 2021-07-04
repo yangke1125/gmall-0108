@@ -39,7 +39,7 @@ public class SeckillPromotionController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> querySeckillPromotionByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> querySeckillPromotionByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = seckillPromotionService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class SeckillPromotionController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<SeckillPromotionEntity> querySeckillPromotionById(@PathVariable("id") Long id){
-		SeckillPromotionEntity seckillPromotion = seckillPromotionService.getById(id);
+    public ResponseVo<SeckillPromotionEntity> querySeckillPromotionById(@PathVariable("id") Long id) {
+        SeckillPromotionEntity seckillPromotion = seckillPromotionService.getById(id);
 
         return ResponseVo.ok(seckillPromotion);
     }
@@ -62,8 +62,8 @@ public class SeckillPromotionController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody SeckillPromotionEntity seckillPromotion){
-		seckillPromotionService.save(seckillPromotion);
+    public ResponseVo<Object> save(@RequestBody SeckillPromotionEntity seckillPromotion) {
+        seckillPromotionService.save(seckillPromotion);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class SeckillPromotionController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody SeckillPromotionEntity seckillPromotion){
-		seckillPromotionService.updateById(seckillPromotion);
+    public ResponseVo update(@RequestBody SeckillPromotionEntity seckillPromotion) {
+        seckillPromotionService.updateById(seckillPromotion);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class SeckillPromotionController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		seckillPromotionService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        seckillPromotionService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

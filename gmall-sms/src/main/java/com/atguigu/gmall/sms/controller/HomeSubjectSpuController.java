@@ -39,7 +39,7 @@ public class HomeSubjectSpuController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> queryHomeSubjectSpuByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> queryHomeSubjectSpuByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = homeSubjectSpuService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class HomeSubjectSpuController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<HomeSubjectSpuEntity> queryHomeSubjectSpuById(@PathVariable("id") Long id){
-		HomeSubjectSpuEntity homeSubjectSpu = homeSubjectSpuService.getById(id);
+    public ResponseVo<HomeSubjectSpuEntity> queryHomeSubjectSpuById(@PathVariable("id") Long id) {
+        HomeSubjectSpuEntity homeSubjectSpu = homeSubjectSpuService.getById(id);
 
         return ResponseVo.ok(homeSubjectSpu);
     }
@@ -62,8 +62,8 @@ public class HomeSubjectSpuController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody HomeSubjectSpuEntity homeSubjectSpu){
-		homeSubjectSpuService.save(homeSubjectSpu);
+    public ResponseVo<Object> save(@RequestBody HomeSubjectSpuEntity homeSubjectSpu) {
+        homeSubjectSpuService.save(homeSubjectSpu);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class HomeSubjectSpuController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody HomeSubjectSpuEntity homeSubjectSpu){
-		homeSubjectSpuService.updateById(homeSubjectSpu);
+    public ResponseVo update(@RequestBody HomeSubjectSpuEntity homeSubjectSpu) {
+        homeSubjectSpuService.updateById(homeSubjectSpu);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class HomeSubjectSpuController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		homeSubjectSpuService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        homeSubjectSpuService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

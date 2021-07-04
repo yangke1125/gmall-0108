@@ -20,7 +20,7 @@ import java.util.Map;
 public class OssController {
 
     @GetMapping("policy")
-    public ResponseVo<Object> policy(){
+    public ResponseVo<Object> policy() {
 
         String accessId = "LTAI5tQAb9D1Dixim6tAco9i"; // 请填写您的AccessKeyId。
         String accessKey = "qMQk4RGZvyfUpBDylPnFnTPQvANeSW"; // 请填写您的AccessKeySecret。

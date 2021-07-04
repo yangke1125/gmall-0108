@@ -39,7 +39,7 @@ public class SeckillSkuController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> querySeckillSkuByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> querySeckillSkuByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = seckillSkuService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class SeckillSkuController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<SeckillSkuEntity> querySeckillSkuById(@PathVariable("id") Long id){
-		SeckillSkuEntity seckillSku = seckillSkuService.getById(id);
+    public ResponseVo<SeckillSkuEntity> querySeckillSkuById(@PathVariable("id") Long id) {
+        SeckillSkuEntity seckillSku = seckillSkuService.getById(id);
 
         return ResponseVo.ok(seckillSku);
     }
@@ -62,8 +62,8 @@ public class SeckillSkuController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody SeckillSkuEntity seckillSku){
-		seckillSkuService.save(seckillSku);
+    public ResponseVo<Object> save(@RequestBody SeckillSkuEntity seckillSku) {
+        seckillSkuService.save(seckillSku);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class SeckillSkuController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody SeckillSkuEntity seckillSku){
-		seckillSkuService.updateById(seckillSku);
+    public ResponseVo update(@RequestBody SeckillSkuEntity seckillSku) {
+        seckillSkuService.updateById(seckillSku);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class SeckillSkuController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		seckillSkuService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        seckillSkuService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

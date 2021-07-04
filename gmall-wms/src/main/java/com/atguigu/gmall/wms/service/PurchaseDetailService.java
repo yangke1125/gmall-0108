@@ -8,8 +8,6 @@ import com.atguigu.gmall.wms.entity.PurchaseDetailEntity;
 import java.util.Map;
 
 /**
- * 
- *
  * @author fengge
  * @email fengge@atguigu.com
  * @date 2021-06-23 18:36:34

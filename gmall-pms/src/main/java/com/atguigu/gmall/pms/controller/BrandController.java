@@ -39,7 +39,7 @@ public class BrandController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> queryBrandByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> queryBrandByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = brandService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class BrandController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<BrandEntity> queryBrandById(@PathVariable("id") Long id){
-		BrandEntity brand = brandService.getById(id);
+    public ResponseVo<BrandEntity> queryBrandById(@PathVariable("id") Long id) {
+        BrandEntity brand = brandService.getById(id);
 
         return ResponseVo.ok(brand);
     }
@@ -62,8 +62,8 @@ public class BrandController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody BrandEntity brand){
-		brandService.save(brand);
+    public ResponseVo<Object> save(@RequestBody BrandEntity brand) {
+        brandService.save(brand);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class BrandController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody BrandEntity brand){
-		brandService.updateById(brand);
+    public ResponseVo update(@RequestBody BrandEntity brand) {
+        brandService.updateById(brand);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class BrandController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		brandService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        brandService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

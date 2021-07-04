@@ -47,6 +47,7 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
 
     @Autowired
     private GmallSmsClient gmallSmsClient;
+
     @Override
     public PageResultVo queryPage(PageParamVo paramVo) {
         IPage<SpuEntity> page = this.page(
@@ -60,12 +61,12 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
     @Override
     public PageResultVo queryCategoryById(PageParamVo pageParamVo, long categoryId) {
         QueryWrapper<SpuEntity> wrapper = new QueryWrapper<>();
-        if (categoryId!=0){
-            wrapper.eq("category_id",categoryId);
+        if (categoryId != 0) {
+            wrapper.eq("category_id", categoryId);
         }
         String key = pageParamVo.getKey();
-        if (StringUtils.isNotBlank(key)){
-            wrapper.and(t->t.like("name",key).or().like("id",key));
+        if (StringUtils.isNotBlank(key)) {
+            wrapper.and(t -> t.like("name", key).or().like("id", key));
         }
         IPage<SpuEntity> page = this.page(
                 pageParamVo.getPage(),
@@ -91,38 +92,38 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
 
     public void saveSku(SpuVo spu, Long spuId) {
         List<SkuVo> skus = spu.getSkus();
-        if (CollectionUtils.isEmpty(skus)){
-            return ;
+        if (CollectionUtils.isEmpty(skus)) {
+            return;
         }
         skus.forEach(skuVo -> {
             skuVo.setSpuId(spuId);
             skuVo.setCategoryId(spu.getCategoryId());
             skuVo.setBrandId(spu.getBrandId());
             List<String> images = skuVo.getImages();
-            if (!CollectionUtils.isEmpty(images)){
-                skuVo.setDefaultImage(StringUtils.isBlank(skuVo.getDefaultImage())?images.get(0):skuVo.getDefaultImage());
+            if (!CollectionUtils.isEmpty(images)) {
+                skuVo.setDefaultImage(StringUtils.isBlank(skuVo.getDefaultImage()) ? images.get(0) : skuVo.getDefaultImage());
             }
             this.skuMapper.insert(skuVo);
 
             Long skuId = skuVo.getId();
-            if (!CollectionUtils.isEmpty(images)){
-                this.skuImagesService.saveBatch(images.stream().map(image->{
+            if (!CollectionUtils.isEmpty(images)) {
+                this.skuImagesService.saveBatch(images.stream().map(image -> {
                     SkuImagesEntity skuImagesEntity = new SkuImagesEntity();
                     skuImagesEntity.setSkuId(skuId);
                     skuImagesEntity.setUrl(image);
-                    skuImagesEntity.setDefaultStatus(StringUtils.equals(skuVo.getDefaultImage(),image)? 1 : 0);
+                    skuImagesEntity.setDefaultStatus(StringUtils.equals(skuVo.getDefaultImage(), image) ? 1 : 0);
                     return skuImagesEntity;
                 }).collect(Collectors.toList()));
             }
             List<SkuAttrValueEntity> saleAttrs = skuVo.getSaleAttrs();
-            if (!CollectionUtils.isEmpty(saleAttrs)){
+            if (!CollectionUtils.isEmpty(saleAttrs)) {
                 saleAttrs.forEach(skuAttrValueEntity -> {
                     skuAttrValueEntity.setSkuId(skuId);
                 });
                 this.skuAttrValueService.saveBatch(saleAttrs);
             }
             SkuSaleVo skuSaleVo = new SkuSaleVo();
-            BeanUtils.copyProperties(skuVo,skuSaleVo);
+            BeanUtils.copyProperties(skuVo, skuSaleVo);
             skuSaleVo.setSkuId(skuId);
             this.gmallSmsClient.saleSales(skuSaleVo);
         });
@@ -130,8 +131,8 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
 
     public void saveBaseAttr(SpuVo spu, Long spuId) {
         List<SpuAttrValueVo> baseAttrs = spu.getBaseAttrs();
-        if (!CollectionUtils.isEmpty(baseAttrs)){
-            List<SpuAttrValueEntity> spuAttrValueEntities = baseAttrs.stream().filter(spuAttrValueVo -> spuAttrValueVo.getAttrValue()!=null
+        if (!CollectionUtils.isEmpty(baseAttrs)) {
+            List<SpuAttrValueEntity> spuAttrValueEntities = baseAttrs.stream().filter(spuAttrValueVo -> spuAttrValueVo.getAttrValue() != null
             ).map(spuAttrValueVo -> {
                 SpuAttrValueEntity spuAttrValueEntity = new SpuAttrValueEntity();
                 BeanUtils.copyProperties(spuAttrValueVo, spuAttrValueEntity);
@@ -144,10 +145,10 @@ public class SpuServiceImpl extends ServiceImpl<SpuMapper, SpuEntity> implements
 
     public void savaSpuDesc(SpuVo spu, Long spuId) {
         List<String> spuImages = spu.getSpuImages();
-        if (!CollectionUtils.isEmpty(spuImages)){
+        if (!CollectionUtils.isEmpty(spuImages)) {
             SpuDescEntity spuDescEntity = new SpuDescEntity();
             spuDescEntity.setSpuId(spuId);
-            spuDescEntity.setDecript(StringUtils.join(spuImages,","));
+            spuDescEntity.setDecript(StringUtils.join(spuImages, ","));
             this.spuDescMapper.insert(spuDescEntity);
         }
     }

@@ -39,7 +39,7 @@ public class CouponSpuController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> queryCouponSpuByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> queryCouponSpuByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = couponSpuService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class CouponSpuController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<CouponSpuEntity> queryCouponSpuById(@PathVariable("id") Long id){
-		CouponSpuEntity couponSpu = couponSpuService.getById(id);
+    public ResponseVo<CouponSpuEntity> queryCouponSpuById(@PathVariable("id") Long id) {
+        CouponSpuEntity couponSpu = couponSpuService.getById(id);
 
         return ResponseVo.ok(couponSpu);
     }
@@ -62,8 +62,8 @@ public class CouponSpuController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody CouponSpuEntity couponSpu){
-		couponSpuService.save(couponSpu);
+    public ResponseVo<Object> save(@RequestBody CouponSpuEntity couponSpu) {
+        couponSpuService.save(couponSpu);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class CouponSpuController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody CouponSpuEntity couponSpu){
-		couponSpuService.updateById(couponSpu);
+    public ResponseVo update(@RequestBody CouponSpuEntity couponSpu) {
+        couponSpuService.updateById(couponSpu);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class CouponSpuController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		couponSpuService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        couponSpuService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

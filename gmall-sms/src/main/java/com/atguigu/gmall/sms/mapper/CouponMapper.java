@@ -6,12 +6,12 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 优惠券信息
- * 
+ *
  * @author fengge
  * @email fengge@atguigu.com
  * @date 2021-06-22 17:13:51
  */
 @Mapper
 public interface CouponMapper extends BaseMapper<CouponEntity> {
-	
+
 }

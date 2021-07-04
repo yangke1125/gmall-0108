@@ -39,7 +39,7 @@ public class CouponSpuCategoryController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> queryCouponSpuCategoryByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> queryCouponSpuCategoryByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = couponSpuCategoryService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class CouponSpuCategoryController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<CouponSpuCategoryEntity> queryCouponSpuCategoryById(@PathVariable("id") Long id){
-		CouponSpuCategoryEntity couponSpuCategory = couponSpuCategoryService.getById(id);
+    public ResponseVo<CouponSpuCategoryEntity> queryCouponSpuCategoryById(@PathVariable("id") Long id) {
+        CouponSpuCategoryEntity couponSpuCategory = couponSpuCategoryService.getById(id);
 
         return ResponseVo.ok(couponSpuCategory);
     }
@@ -62,8 +62,8 @@ public class CouponSpuCategoryController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody CouponSpuCategoryEntity couponSpuCategory){
-		couponSpuCategoryService.save(couponSpuCategory);
+    public ResponseVo<Object> save(@RequestBody CouponSpuCategoryEntity couponSpuCategory) {
+        couponSpuCategoryService.save(couponSpuCategory);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class CouponSpuCategoryController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody CouponSpuCategoryEntity couponSpuCategory){
-		couponSpuCategoryService.updateById(couponSpuCategory);
+    public ResponseVo update(@RequestBody CouponSpuCategoryEntity couponSpuCategory) {
+        couponSpuCategoryService.updateById(couponSpuCategory);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class CouponSpuCategoryController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		couponSpuCategoryService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        couponSpuCategoryService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

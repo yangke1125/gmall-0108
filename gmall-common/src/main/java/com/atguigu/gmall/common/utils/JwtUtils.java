@@ -30,7 +30,7 @@ public class JwtUtils {
     /**
      * 公钥解析token
      *
-     * @param token  用户请求中的token
+     * @param token 用户请求中的token
      * @return
      * @throws Exception
      */
@@ -41,7 +41,7 @@ public class JwtUtils {
     /**
      * 获取token中的用户信息
      *
-     * @param token  用户请求中的令牌
+     * @param token 用户请求中的令牌
      * @return 用户信息
      * @throws Exception
      */

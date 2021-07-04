@@ -20,8 +20,6 @@ import com.atguigu.gmall.common.bean.ResponseVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
 
 /**
- * 
- *
  * @author fengge
  * @email fengge@atguigu.com
  * @date 2021-06-23 18:36:34
@@ -39,7 +37,7 @@ public class PurchaseDetailController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> queryPurchaseDetailByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> queryPurchaseDetailByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = purchaseDetailService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +49,8 @@ public class PurchaseDetailController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<PurchaseDetailEntity> queryPurchaseDetailById(@PathVariable("id") Long id){
-		PurchaseDetailEntity purchaseDetail = purchaseDetailService.getById(id);
+    public ResponseVo<PurchaseDetailEntity> queryPurchaseDetailById(@PathVariable("id") Long id) {
+        PurchaseDetailEntity purchaseDetail = purchaseDetailService.getById(id);
 
         return ResponseVo.ok(purchaseDetail);
     }
@@ -62,8 +60,8 @@ public class PurchaseDetailController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody PurchaseDetailEntity purchaseDetail){
-		purchaseDetailService.save(purchaseDetail);
+    public ResponseVo<Object> save(@RequestBody PurchaseDetailEntity purchaseDetail) {
+        purchaseDetailService.save(purchaseDetail);
 
         return ResponseVo.ok();
     }
@@ -73,8 +71,8 @@ public class PurchaseDetailController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody PurchaseDetailEntity purchaseDetail){
-		purchaseDetailService.updateById(purchaseDetail);
+    public ResponseVo update(@RequestBody PurchaseDetailEntity purchaseDetail) {
+        purchaseDetailService.updateById(purchaseDetail);
 
         return ResponseVo.ok();
     }
@@ -84,8 +82,8 @@ public class PurchaseDetailController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		purchaseDetailService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        purchaseDetailService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

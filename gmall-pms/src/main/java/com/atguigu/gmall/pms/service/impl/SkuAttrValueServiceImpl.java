@@ -28,6 +28,7 @@ public class SkuAttrValueServiceImpl extends ServiceImpl<SkuAttrValueMapper, Sku
 
     @Autowired
     private AttrMapper attrMapper;
+
     @Override
     public PageResultVo queryPage(PageParamVo paramVo) {
         IPage<SkuAttrValueEntity> page = this.page(
@@ -41,11 +42,11 @@ public class SkuAttrValueServiceImpl extends ServiceImpl<SkuAttrValueMapper, Sku
     @Override
     public List<SkuAttrValueEntity> querySearchAttrValuesBySkuId(Long cid, Long skuId) {
         List<AttrEntity> attrEntities = this.attrMapper.selectList(new QueryWrapper<AttrEntity>().eq("category_id", cid).eq("search_type", 1));
-        if (CollectionUtils.isEmpty(attrEntities)){
+        if (CollectionUtils.isEmpty(attrEntities)) {
             return null;
         }
         List<Long> attrIds = attrEntities.stream().map(AttrEntity::getId).collect(Collectors.toList());
-        return this.list(new QueryWrapper<SkuAttrValueEntity>().eq("sku_id",skuId).in("attr_id",attrIds));
+        return this.list(new QueryWrapper<SkuAttrValueEntity>().eq("sku_id", skuId).in("attr_id", attrIds));
 
 
     }

@@ -31,19 +31,20 @@ class GmallSearchApplicationTests {
     private GoodsRepository goodsRepository;
     @Autowired
     private GmallWmsApi gmallWmsApi;
+
     @Test
     void contextLoads() {
-        if (!this.restTemplate.indexExists(Goods.class)){
+        if (!this.restTemplate.indexExists(Goods.class)) {
             this.restTemplate.createIndex(Goods.class);
             this.restTemplate.putMapping(Goods.class);
         }
-        Integer pageNum =1;
-        Integer pageSize =100;
+        Integer pageNum = 1;
+        Integer pageSize = 100;
         do {
-            PageParamVo pageParamVo = new PageParamVo(pageNum,pageSize,null);
+            PageParamVo pageParamVo = new PageParamVo(pageNum, pageSize, null);
             ResponseVo<List<SpuEntity>> responseVo = this.pmsClient.querySpuByPageJson(pageParamVo);
             List<SpuEntity> spuEntities = responseVo.getData();
-            if (CollectionUtils.isEmpty(spuEntities)){
+            if (CollectionUtils.isEmpty(spuEntities)) {
                 return;
             }
 
@@ -51,7 +52,7 @@ class GmallSearchApplicationTests {
             spuEntities.forEach(spuEntity -> {
                 ResponseVo<List<SkuEntity>> skuResponseVo = this.pmsClient.querySkuBySpuId(spuEntity.getId());
                 List<SkuEntity> skuEntities = skuResponseVo.getData();
-                if (!CollectionUtils.isEmpty(skuEntities)){
+                if (!CollectionUtils.isEmpty(skuEntities)) {
 
                     ResponseVo<BrandEntity> brandEntityResponseVo = this.pmsClient.queryBrandById(spuEntity.getBrandId());
                     BrandEntity brandEntity = brandEntityResponseVo.getData();
@@ -74,19 +75,19 @@ class GmallSearchApplicationTests {
                         //销量库存
                         ResponseVo<List<WareSkuEntity>> wareResponseVo = this.gmallWmsApi.queryWareSkuByskuId(skuEntity.getId());
                         List<WareSkuEntity> wareSkuEntities = wareResponseVo.getData();
-                        if (!CollectionUtils.isEmpty(wareSkuEntities)){
-                            goods.setSales(wareSkuEntities.stream().mapToLong(WareSkuEntity::getSales).reduce((a,b)->a+b).getAsLong());
-                            goods.setStock(wareSkuEntities.stream().anyMatch(wareSkuEntity -> wareSkuEntity.getStock()-wareSkuEntity.getStockLocked() >0));
+                        if (!CollectionUtils.isEmpty(wareSkuEntities)) {
+                            goods.setSales(wareSkuEntities.stream().mapToLong(WareSkuEntity::getSales).reduce((a, b) -> a + b).getAsLong());
+                            goods.setStore(wareSkuEntities.stream().anyMatch(wareSkuEntity -> wareSkuEntity.getStock() - wareSkuEntity.getStockLocked() > 0));
                         }
 
                         //品牌
-                        if (brandEntity!=null){
+                        if (brandEntity != null) {
                             goods.setBrandId(brandEntity.getId());
                             goods.setBrandName(brandEntity.getName());
                             goods.setLogo(brandEntity.getLogo());
                         }
                         //分类
-                        if (categoryEntity!=null){
+                        if (categoryEntity != null) {
                             goods.setCategoryId(categoryEntity.getId());
                             goods.setCategoryName(categoryEntity.getName());
                         }
@@ -95,19 +96,19 @@ class GmallSearchApplicationTests {
 
                         ResponseVo<List<SkuAttrValueEntity>> saleAttrResponseVo = this.pmsClient.querySearchAttrValuesBySkuId(skuEntity.getCategoryId(), skuEntity.getId());
                         List<SkuAttrValueEntity> skuAttrValueEntities = saleAttrResponseVo.getData();
-                        if (!CollectionUtils.isEmpty(skuAttrValueEntities)){
-                            attrValueVos.addAll( skuAttrValueEntities.stream().map(skuAttrValueEntity -> {
+                        if (!CollectionUtils.isEmpty(skuAttrValueEntities)) {
+                            attrValueVos.addAll(skuAttrValueEntities.stream().map(skuAttrValueEntity -> {
                                 SearchAttrValueVo searchAttrValueVo = new SearchAttrValueVo();
-                                BeanUtils.copyProperties(skuAttrValueEntity,searchAttrValueVo);
+                                BeanUtils.copyProperties(skuAttrValueEntity, searchAttrValueVo);
                                 return searchAttrValueVo;
                             }).collect(Collectors.toList()));
                         }
                         ResponseVo<List<SpuAttrValueEntity>> baseAttrResponseVo = this.pmsClient.querySearchAttrValuesBySpuId(skuEntity.getCategoryId(), spuEntity.getId());
                         List<SpuAttrValueEntity> spuAttrValueEntities = baseAttrResponseVo.getData();
-                        if (!CollectionUtils.isEmpty(spuAttrValueEntities)){
-                            attrValueVos.addAll( spuAttrValueEntities.stream().map(spuAttrValueEntity -> {
+                        if (!CollectionUtils.isEmpty(spuAttrValueEntities)) {
+                            attrValueVos.addAll(spuAttrValueEntities.stream().map(spuAttrValueEntity -> {
                                 SearchAttrValueVo searchAttrValueVo = new SearchAttrValueVo();
-                                BeanUtils.copyProperties(spuAttrValueEntity,searchAttrValueVo);
+                                BeanUtils.copyProperties(spuAttrValueEntity, searchAttrValueVo);
                                 return searchAttrValueVo;
                             }).collect(Collectors.toList()));
                         }
@@ -122,9 +123,9 @@ class GmallSearchApplicationTests {
                 }
             });
 
-            pageSize =spuEntities.size();
+            pageSize = spuEntities.size();
             pageNum++;
-        }while (pageSize==100);
+        } while (pageSize == 100);
 
     }
 

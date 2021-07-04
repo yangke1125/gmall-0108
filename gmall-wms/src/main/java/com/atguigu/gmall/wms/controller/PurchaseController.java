@@ -39,7 +39,7 @@ public class PurchaseController {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> queryPurchaseByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> queryPurchaseByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = purchaseService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class PurchaseController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<PurchaseEntity> queryPurchaseById(@PathVariable("id") Long id){
-		PurchaseEntity purchase = purchaseService.getById(id);
+    public ResponseVo<PurchaseEntity> queryPurchaseById(@PathVariable("id") Long id) {
+        PurchaseEntity purchase = purchaseService.getById(id);
 
         return ResponseVo.ok(purchase);
     }
@@ -62,8 +62,8 @@ public class PurchaseController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody PurchaseEntity purchase){
-		purchaseService.save(purchase);
+    public ResponseVo<Object> save(@RequestBody PurchaseEntity purchase) {
+        purchaseService.save(purchase);
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class PurchaseController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody PurchaseEntity purchase){
-		purchaseService.updateById(purchase);
+    public ResponseVo update(@RequestBody PurchaseEntity purchase) {
+        purchaseService.updateById(purchase);
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class PurchaseController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		purchaseService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        purchaseService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

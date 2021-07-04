@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -32,6 +33,7 @@ public class SkuBoundsServiceImpl extends ServiceImpl<SkuBoundsMapper, SkuBounds
     private SkuFullReductionMapper reductionMapper;
     @Autowired
     private SkuLadderMapper ladderMapper;
+
     @Override
     public PageResultVo queryPage(PageParamVo paramVo) {
         IPage<SkuBoundsEntity> page = this.page(
@@ -46,20 +48,20 @@ public class SkuBoundsServiceImpl extends ServiceImpl<SkuBoundsMapper, SkuBounds
     @Override
     public void saleSales(SkuSaleVo saleVo) {
         SkuBoundsEntity skuBoundsEntity = new SkuBoundsEntity();
-        BeanUtils.copyProperties(saleVo,skuBoundsEntity);
+        BeanUtils.copyProperties(saleVo, skuBoundsEntity);
         List<Integer> work = saleVo.getWork();
-        if (!CollectionUtils.isEmpty(work) || work.size()==4){
-            skuBoundsEntity.setWork(work.get(3)*8+work.get(2)*4+work.get(1)*2+work.get(0));
+        if (!CollectionUtils.isEmpty(work) || work.size() == 4) {
+            skuBoundsEntity.setWork(work.get(3) * 8 + work.get(2) * 4 + work.get(1) * 2 + work.get(0));
         }
         this.save(skuBoundsEntity);
 
         SkuFullReductionEntity skuFullReductionEntity = new SkuFullReductionEntity();
-        BeanUtils.copyProperties(saleVo,skuFullReductionEntity);
+        BeanUtils.copyProperties(saleVo, skuFullReductionEntity);
         skuFullReductionEntity.setAddOther(saleVo.getFullAddOther());
         this.reductionMapper.insert(skuFullReductionEntity);
 
         SkuLadderEntity ladderEntity = new SkuLadderEntity();
-        BeanUtils.copyProperties(saleVo,ladderEntity);
+        BeanUtils.copyProperties(saleVo, ladderEntity);
         ladderEntity.setAddOther(saleVo.getLadderAddOther());
         this.ladderMapper.insert(ladderEntity);
 
