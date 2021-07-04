@@ -44,7 +44,7 @@ import java.util.stream.Collectors;
 public class SearchService {
 
     //http://localhost:18086/search?keyword=%E6%89%8B%E6%9C%BA&brandId=1,2&categoryId=225,250&priceFrom=1000&priceTo=5000&store=false&props=4:8G-12G&props=5:128G-256G&pageNum=2
-
+//测试
 
     @Autowired
     private RestHighLevelClient restHighLevelClient;
