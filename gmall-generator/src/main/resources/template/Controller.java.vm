@@ -39,7 +39,7 @@ public class ${className}Controller {
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> query${className}ByPage(PageParamVo paramVo) {
+    public ResponseVo<PageResultVo> query${className}ByPage(PageParamVo paramVo){
         PageResultVo pageResultVo = ${classname}Service.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +51,8 @@ public class ${className}Controller {
      */
     @GetMapping("{${pk.attrname}}")
     @ApiOperation("详情查询")
-    public ResponseVo<${className}Entity> query${className}ById(@PathVariable("${pk.attrname}") ${pk.attrType} ${pk.attrname}) {
-            ${className}Entity ${classname} = ${classname}Service.getById(${pk.attrname});
+    public ResponseVo<${className}Entity> query${className}ById(@PathVariable("${pk.attrname}") ${pk.attrType} ${pk.attrname}){
+		${className}Entity ${classname} = ${classname}Service.getById(${pk.attrname});
 
         return ResponseVo.ok(${classname});
     }
@@ -62,8 +62,8 @@ public class ${className}Controller {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody ${className}Entity ${classname}) {
-            ${classname}Service.save(${classname});
+    public ResponseVo<Object> save(@RequestBody ${className}Entity ${classname}){
+		${classname}Service.save(${classname});
 
         return ResponseVo.ok();
     }
@@ -73,8 +73,8 @@ public class ${className}Controller {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody ${className}Entity ${classname}) {
-            ${classname}Service.updateById(${classname});
+    public ResponseVo update(@RequestBody ${className}Entity ${classname}){
+		${classname}Service.updateById(${classname});
 
         return ResponseVo.ok();
     }
@@ -84,8 +84,8 @@ public class ${className}Controller {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<${pk.attrType}> ${pk.attrname}s) {
-            ${classname}Service.removeByIds(${pk.attrname}s);
+    public ResponseVo delete(@RequestBody List<${pk.attrType}> ${pk.attrname}s){
+		${classname}Service.removeByIds(${pk.attrname}s);
 
         return ResponseVo.ok();
     }

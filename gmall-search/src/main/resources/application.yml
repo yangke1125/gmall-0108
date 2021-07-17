@@ -20,6 +20,21 @@ spring:
   elasticsearch:
     rest:
       uris: http://192.168.153.129:9200
+  jackson:
+    default-property-inclusion: non_null
+  thymeleaf:
+    cache: false
+  rabbitmq:
+    host: 192.168.153.129
+    port: 5672
+    virtual-host: /yangke
+    username: yangke
+    password: yangke
+    listener:
+      simple:
+        prefetch: 1
+        concurrency: 4
+        acknowledge-mode: manual
 feign:
   sentinel:
     enabled: true

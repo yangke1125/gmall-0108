@@ -6,12 +6,12 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * ${comments}
- *
+ * 
  * @author ${author}
  * @email ${email}
  * @date ${datetime}
  */
 @Mapper
 public interface ${className}Mapper extends BaseMapper<${className}Entity> {
-
+	
 }

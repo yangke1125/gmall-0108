@@ -4,6 +4,9 @@ import com.atguigu.gmall.pms.entity.AttrEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * 商品属性
  *

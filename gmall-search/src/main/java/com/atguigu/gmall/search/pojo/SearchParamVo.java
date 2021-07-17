@@ -27,8 +27,8 @@ public class SearchParamVo {
 
     private Integer sort = 0;// 排序字段：0-默认，得分降序；1-按价格降序；2-按价格升序；3-销量；4-新品
 
-    private Integer pageNum; // 页码
-    private final Integer pageSize = 5; // 每页记录数
+    private Integer pageNum =1; // 页码
+    private final Integer pageSize = 20; // 每页记录数
 
 
 }

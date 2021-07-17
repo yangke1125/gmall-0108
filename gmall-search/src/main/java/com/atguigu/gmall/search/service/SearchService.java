@@ -117,7 +117,7 @@ public class SearchService {
             List<CategoryEntity> categoryEntities = cateBuckets.stream().map(bucket -> {
                 CategoryEntity categoryEntity = new CategoryEntity();
                 categoryEntity.setId(((Terms.Bucket) bucket).getKeyAsNumber().longValue());
-                ParsedLongTerms categoryNameAgg = (ParsedLongTerms) ((Terms.Bucket) bucket).getAggregations().get("categoryNameAgg");
+                ParsedStringTerms categoryNameAgg = (ParsedStringTerms) ((Terms.Bucket) bucket).getAggregations().get("categoryNameAgg");
                 List<? extends Terms.Bucket> nameAggBuckets = categoryNameAgg.getBuckets();
                 if (!CollectionUtils.isEmpty(nameAggBuckets)) {
                     categoryEntity.setName(nameAggBuckets.get(0).getKeyAsString());
@@ -273,7 +273,7 @@ public class SearchService {
         // 5.2. 构建分类聚合
         sourceBuilder.aggregation(
                 AggregationBuilders.terms("categoryAgg").field("categoryId")
-                        .subAggregation(AggregationBuilders.terms("categoryNameAgg").field("categoryId"))
+                        .subAggregation(AggregationBuilders.terms("categoryNameAgg").field("categoryName"))
         );
         // 5.3. 构建规格参数的嵌套聚合
         sourceBuilder.aggregation(AggregationBuilders.nested("attrAgg", "searchAttrs")
@@ -281,6 +281,8 @@ public class SearchService {
                         .subAggregation(AggregationBuilders.terms("attrNameAgg").field("searchAttrs.attrName"))
                         .subAggregation(AggregationBuilders.terms("attrValueAgg").field("searchAttrs.attrValue")))
         );
+        // 6. 构建结果集过滤
+//        sourceBuilder.fetchSource(new String[]{"skuId", "title", "subTitle","price", "defaultImage"}, null);
 
         System.out.println(sourceBuilder);
         return sourceBuilder;

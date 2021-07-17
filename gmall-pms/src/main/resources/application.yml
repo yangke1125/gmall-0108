@@ -27,6 +27,14 @@ spring:
   redis:
     host: 192.168.153.129
     port: 6379
+  rabbitmq:
+    host: 192.168.153.129
+    port: 5672
+    virtual-host: /yangke
+    username: yangke
+    password: yangke
+    publisher-confirm-type: correlated
+    publisher-returns: true
 feign:
   sentinel:
     enabled: true
